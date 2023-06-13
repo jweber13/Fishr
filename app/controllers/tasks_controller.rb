@@ -18,7 +18,7 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
     @task.user = current_user
     authorize @task
-    if @job.save
+    if @task.save
       redirect_to tasks_path
     else
       render :new, status: :unprocessable_entity
