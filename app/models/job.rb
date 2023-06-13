@@ -6,7 +6,7 @@ class Job < ApplicationRecord
   has_many :documents, through: :document_jobs
 
   has_many :tasksjobs
-  has_many :jobs, through: :tasksjobs
+  has_many :tasks, through: :tasksjobs
 
   enum :status, {
     created: 0,

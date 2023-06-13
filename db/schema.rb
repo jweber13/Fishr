@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_13_031607) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_13_034051) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -93,12 +93,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_13_031607) do
   end
 
   create_table "tasksjobs", force: :cascade do |t|
-    t.bigint "jobs_id", null: false
-    t.bigint "tasks_id", null: false
+    t.bigint "job_id", null: false
+    t.bigint "task_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["jobs_id"], name: "index_tasksjobs_on_jobs_id"
-    t.index ["tasks_id"], name: "index_tasksjobs_on_tasks_id"
+    t.index ["job_id"], name: "index_tasksjobs_on_job_id"
+    t.index ["task_id"], name: "index_tasksjobs_on_task_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -123,6 +123,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_13_031607) do
   add_foreign_key "jobs", "companies"
   add_foreign_key "jobs", "fishing_trips"
   add_foreign_key "tasks", "users"
-  add_foreign_key "tasksjobs", "jobs", column: "jobs_id"
-  add_foreign_key "tasksjobs", "tasks", column: "tasks_id"
+  add_foreign_key "tasksjobs", "jobs"
+  add_foreign_key "tasksjobs", "tasks"
 end
