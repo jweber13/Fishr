@@ -10,9 +10,89 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_12_075505) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_12_091050) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "companies", force: :cascade do |t|
+    t.string "name"
+    t.string "website"
+    t.string "address"
+    t.text "description"
+    t.integer "longitude"
+    t.integer "lattitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "contacts", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "company_id", null: false
+    t.string "firstname"
+    t.string "lastname"
+    t.string "email"
+    t.string "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_contacts_on_company_id"
+    t.index ["user_id"], name: "index_contacts_on_user_id"
+  end
+
+  create_table "documentjobs", force: :cascade do |t|
+    t.bigint "job_id", null: false
+    t.bigint "document_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["document_id"], name: "index_documentjobs_on_document_id"
+    t.index ["job_id"], name: "index_documentjobs_on_job_id"
+  end
+
+  create_table "documents", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.integer "file_size"
+    t.string "category"
+    t.text "data"
+    t.string "filename"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_documents_on_user_id"
+  end
+
+  create_table "fishing_trips", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_fishing_trips_on_user_id"
+  end
+
+  create_table "jobs", force: :cascade do |t|
+    t.bigint "fishing_trip_id", null: false
+    t.bigint "company_id", null: false
+    t.string "url"
+    t.text "content"
+    t.integer "status"
+    t.string "tags"
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_jobs_on_company_id"
+    t.index ["fishing_trip_id"], name: "index_jobs_on_fishing_trip_id"
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "job_id", null: false
+    t.string "category"
+    t.integer "status"
+    t.date "deadline"
+    t.text "description"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["job_id"], name: "index_tasks_on_job_id"
+    t.index ["user_id"], name: "index_tasks_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,8 +102,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_12_075505) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "username"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "contacts", "companies"
+  add_foreign_key "contacts", "users"
+  add_foreign_key "documentjobs", "documents"
+  add_foreign_key "documentjobs", "jobs"
+  add_foreign_key "documents", "users"
+  add_foreign_key "fishing_trips", "users"
+  add_foreign_key "jobs", "companies"
+  add_foreign_key "jobs", "fishing_trips"
+  add_foreign_key "tasks", "jobs"
+  add_foreign_key "tasks", "users"
 end
