@@ -24,6 +24,6 @@ class FishingTripsController < ApplicationController
   private
 
   def fishing_trip_params
-    params.require(:job).permit(:user, :name)
+    params.require(:job).permit(:user_id, :name)
   end
 end
