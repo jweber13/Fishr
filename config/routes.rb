@@ -6,8 +6,10 @@ Rails.application.routes.draw do
     resources :jobs, only: %i[new index create]
   end
 
-  resources :jobs, only: %i[show update]
-  resources :tasks, only: %i[index show new create update destroy]
+  resources :jobs, only: %i[show edit update]
+
+  resources :tasks
+  resources :contacts
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
