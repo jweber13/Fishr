@@ -7,7 +7,11 @@ class JobPolicy < ApplicationPolicy
   end
 
   def create?
-    user == @fishing_trip.user
+    user == record.user
+  end
+
+  def update?
+    user == record.user
   end
 
   def show?

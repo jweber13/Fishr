@@ -1,6 +1,6 @@
 class JobsController < ApplicationController
   before_action :set_job, only: %i[show update]
-  before_action :set_trip, only: %i[index new create]
+  before_action :set_trip, only: %i[index new edit create]
 
   def index
     @jobs = policy_scope(Job)
@@ -24,6 +24,10 @@ class JobsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def edit
+    authorize @job
   end
 
   def update
