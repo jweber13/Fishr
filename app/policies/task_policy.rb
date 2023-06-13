@@ -14,6 +14,10 @@ class TaskPolicy < ApplicationPolicy
     user_logged_in?
   end
 
+  def update?
+    user == record.user
+  end
+
   def destory?
     user == record.user
   end
