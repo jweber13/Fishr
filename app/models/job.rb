@@ -21,4 +21,6 @@ class Job < ApplicationRecord
   }
 
   validates_presence_of :title, :content, :status
+  validates_type :title, :string
+  validates_type :url, :string
 end
