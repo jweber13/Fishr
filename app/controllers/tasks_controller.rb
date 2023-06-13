@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_ation :set_task, only: %i[show update destroy]
+  before_action :set_task, only: %i[show edit update destroy]
 
   def index
     @tasks = scope(Task)
@@ -23,6 +23,10 @@ class TasksController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def edit
+    authorize @task
   end
 
   def update
