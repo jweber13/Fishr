@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
 
   resources :jobs, only: %i[show update]
-
+  resources :tasks, only: %i[index show new create update destroy]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
