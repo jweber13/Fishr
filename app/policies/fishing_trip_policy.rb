@@ -10,6 +10,10 @@ class FishingTripPolicy < ApplicationPolicy
     true
   end
 
+  def create?
+    true
+  end
+
   def show?
     user == record.user
   end
