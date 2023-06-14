@@ -81,3 +81,7 @@ group :test do
 end
 
 gem "tailwindcss-rails", "~> 2.0"
+
+gem "react_on_rails", "= 13.3.1"
+
+gem "shakapacker", "= 6.5.5"
