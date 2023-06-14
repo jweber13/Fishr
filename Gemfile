@@ -83,3 +83,5 @@ end
 gem "tailwindcss-rails", "~> 2.0"
 
 gem "react_on_rails"
+
+gem "shakapacker"
