@@ -1,0 +1,39 @@
+import { Controller } from "@hotwired/stimulus"
+
+// Connects to data-controller="fishing-trip-input"
+export default class extends Controller {
+  static targets = ["nameInput"];
+
+  connect() {
+    console.log(" ");
+  }
+
+  create() {
+    console.log("entered")
+    const name = this.nameInputTarget.value;
+    const tripData = { name };
+
+    fetch("/fishing_trips", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRF-Token": document.querySelector(
+          'meta[name="csrf-token"]'
+        ).getAttribute("content"),
+      },
+      body: JSON.stringify(tripData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Handle the response data here
+        console.log(data);
+        if (data.status == "created") {
+
+        }
+      })
+      .catch((error) => {
+        // Handle any errors here
+        console.error(error);
+      });
+  }
+}

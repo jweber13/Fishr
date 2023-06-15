@@ -4,5 +4,11 @@
 
 import { application } from "./application"
 
+import FishingTripInputController from "./fishing_trip_input_controller"
+application.register("fishing-trip-input", FishingTripInputController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import TripmodalController from "./tripmodal_controller"
+application.register("tripmodal", TripmodalController)

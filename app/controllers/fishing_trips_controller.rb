@@ -10,9 +10,11 @@ class FishingTripsController < ApplicationController
     @fishing_trip.user = current_user
     authorize @fishing_trip
     if @fishing_trip.save
-      redirect_to fishing_trip_path(@fishing_trip)
+      # redirect_to fishing_trip_path(@fishing_trip)
+      render json: { message: @fishing_trip.name.to_json, status: :created }
     else
       render :new, status: :unprocessable_entity
+      # render json: { message: @fishing_trip.name.to_json, status: :created }
     end
   end
 
@@ -24,6 +26,6 @@ class FishingTripsController < ApplicationController
   private
 
   def fishing_trip_params
-    params.require(:job).permit(:user_id, :name)
+    params.require(:fishing_trip).permit(:name)
   end
 end
