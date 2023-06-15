@@ -13,16 +13,18 @@
         <% end %>
       </div>
       <div class="contacts-list">
-        <% if @contacts.present? %>
-          <% @contacts.each do |contact| %>
-            <%= render "contact_card", contact: contact %>
+        <div class="contacts-lists-contain overflow-auto"  style="height:70vh;">
+          <% if @contacts.present? %>
+            <% @contacts.each do |contact| %>
+              <%= render "contact_card", contact: contact %>
+            <% end %>
+          <% else %>
+            <h4>Add your first contact</h2>
           <% end %>
-        <% else %>
-          <h4>Add your first contact</h2>
-        <% end %>
+        </div>
 
         <div class="contacts-more text-center">
-          <p>Total contacts <strong>(10/30)</strong> <a href="#">load more?</a></p>
+          <p>Total contacts <strong>(<%= @contacts.count %>)</strong> <a href="#">load more?</a></p>
         </div>
       </div>
       <div class="contacts-footer text-center">
