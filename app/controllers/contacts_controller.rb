@@ -2,7 +2,7 @@ class ContactsController < ApplicationController
   before_action :set_contact, only: %i[show edit update destroy]
 
   def index
-    @contacts = scope(Contact)
+    @contacts = policy_scope(Contact)
   end
 
   def show
