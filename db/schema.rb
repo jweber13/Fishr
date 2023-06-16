@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_13_064030) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_16_051326) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -37,6 +37,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_13_064030) do
     t.string "insta"
     t.string "linkedin"
     t.string "twitter"
+    t.string "title"
+    t.text "note"
     t.index ["company_id"], name: "index_contacts_on_company_id"
     t.index ["user_id"], name: "index_contacts_on_user_id"
   end
