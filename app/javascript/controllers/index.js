@@ -7,8 +7,5 @@ import { application } from "./application"
 import FishingTripInputController from "./fishing_trip_input_controller"
 application.register("fishing-trip-input", FishingTripInputController)
 
-import HelloController from "./hello_controller"
-application.register("hello", HelloController)
-
 import ModalhandlerController from "./modalhandler_controller"
 application.register("modalhandler", ModalhandlerController)
