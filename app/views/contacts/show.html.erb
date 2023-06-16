@@ -1,42 +1,48 @@
-<div class="container">
-  <div class="contact-avatar">
-    <img src="https://files.slack.com/files-pri/T02NE0241-F05CP8A4C7N/daforcez_italian_pirate_looking_back_developer_mid-journey_medi_db7d8299-4b6b-4540-a088-7f87213259f4.png" alt="" style="height:100px;width:100px;">
-    <h3>Joe Webber</h3>
-    <p>Backend Lead</p>
-    <div class="contact-scocials flex">
-      <div class="contact-social"><i class="fa-brands fa-facebook"></i></div>
-      <div class="contact-social"><i class="fa-brands fa-instagram"></i></div>
-      <div class="contact-social"><i class="fa-brands fa-twitter"></i></div>
+<div class="container ">
+  <img src="https://slack-imgs.com/?c=1&o1=ro&url=https%3A%2F%2Fmedia.discordapp.net%2Fattachments%2F1112292984747204731%2F1117728036645769337%2FDaFoRceZ_logo_for_a_job_application_management_app_fish_trip_bi_f250d0fd-17a2-4115-a1f2-cf0392003020.png%3Fwidth%3D998%26height%3D998" alt="" class="mx-auto w-1/2 aspect-square rounded-full">
+  <h3 class="text-center"><%= "#{contact.firstname} #{contact.lastname}" %></h3>
+  <p class="text-center"><%= contact.title %></p>
+  <p class="text-center">
+    <%#= link_to company_path(contact.company) do %>
+      <i class="fa-solid fa-buildings"></i><%= contact.company.name %></p>
+    <%# end %>
+    <div class="contact-scocials flex justify-around mx-auto w-1/2">
+      <a href="www.linkdedin.com/<%= contact.linkedin %>">
+        <div class="contact-social"><i class="fa-brands fa-linkedin"></i></div>
+      </a>
+      <a href="www.instagram.com/<%= contact.linkedin %>">
+        <div class="contact-social"><i class="fa-brands fa-instagram"></i></div>
+      </a>
+      <a href="www.twitter.com/<%= contact.linkedin %>">
+        <div class="contact-social"><i class="fa-brands fa-twitter"></i></div>
+      </a>
     </div>
-    <div class="contact-nav flex">
-      <div class="contact-nav-item">
-        Personal info
+
+    <div class="contact-info bg-yellow-100 container">
+      <h3>Contacts</h3>
+      <div class="contact-info-item flex">
+        <i class="w-10 fa-solid fa-phone"></i>
+        <div><%= contact.phone %>
+        </div>
       </div>
-      <div class="contact-nav-item">
-        Experience
+      <div class="contact-info-item flex">
+        <i class="w-10 fa-solid fa-envelope"></i>
+        <div><%= contact.email %>
+        </div>
       </div>
-      <div class="contact-nav-item">
-        Top Skills
+      <div class="contact-info-item flex">
+        <i class="w-10 fa-solid fa-link"></i>
+        <div><%= contact.company.website %>
+        </div>
       </div>
-      <div class="contact-nav-item">
-        Reviews
+      <div class="contact-info-item flex">
+        <i class="w-10 fa-solid fa-location-dot"></i>
+        <div><%= contact.company.address %>
+        </div>
       </div>
     </div>
-    <div class="contact-about bg-green-100">
-      <h3>About me</h3>
-      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias doloremque, similique saepe obcaecati consectetur voluptatibus id necessitatibus quis quibusdam accusantium placeat omnis modi cum magni eveniet aliquam qui. Nisi, totam?</p>
-    </div>
-    <div class="contact-info bg-yellow-100">
-      <h3>Contact here</h3>
-      <div class="contact-info-item">
-        <i class="fa-solid fa-phone"></i> +81 888 8888
-      </div>
-      <div class="contact-info-item">
-        <i class="fa-solid fa-mail"></i> joeweber@wagon.com
-      </div>
-      <div class="contact-info-item">
-        <i class="fa-solid fa-pin"></i> adress, Meguro, Shinagawa, Tokyo, Japan, xxx - xxxx
-      </div>
+    <div class="contact-about bg-green-100 container">
+      <h3>Note</h3>
+      <p><%= contact.note %></p>
     </div>
   </div>
-</div>
