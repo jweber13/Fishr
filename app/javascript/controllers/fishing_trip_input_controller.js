@@ -28,7 +28,18 @@ export default class extends Controller {
         // Handle the response data here
         console.log(data);
         if (data.status == "created") {
-
+          // Currently, the window will close, but we'll have to re-route this to the #show page soon after upon creation.
+          let modal = document.getElementById("modal");
+          let opacity = 1;
+          const fade = () => {
+            if ((opacity -= 0.1) < 0) {
+              modal.style.display = 'none';
+            } else {
+              modal.style.opacity = opacity;
+              requestAnimationFrame(fade);
+            }
+          };
+          fade();
         }
       })
       .catch((error) => {

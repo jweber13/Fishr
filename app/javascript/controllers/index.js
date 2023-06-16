@@ -10,5 +10,5 @@ application.register("fishing-trip-input", FishingTripInputController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
-import TripmodalController from "./tripmodal_controller"
-application.register("tripmodal", TripmodalController)
+import ModalhandlerController from "./modalhandler_controller"
+application.register("modalhandler", ModalhandlerController)
