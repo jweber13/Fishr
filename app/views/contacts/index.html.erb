@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="contacts flex justify-stretch">
+  <div class="contacts flex justify-stretch" data-controller="new-contact">
     <div class="contacts-left flex-1">
       <div class="contacts-search">
         <h2>Search name & email</h2>
@@ -22,16 +22,13 @@
             <h4>Add your first contact</h2>
           <% end %>
         </div>
-
-        <div class="contacts-more text-center">
-          <p>Total contacts <strong>(<%= @contacts.count %>)</strong> <a href="#">load more?</a></p>
-        </div>
       </div>
       <div class="contacts-footer text-center">
-        <button class="border">+ Add contact</button>
+        <button class="border" data-action="click->new-contact#renderNew">+ Add contact</button>
       </div>
     </div>
-    <div class="contacts-right w-2/5 bg-red-400">
-      <%= render template: "contacts/show", locals: {contact: Contact.first} %></div>
+    <div class="contacts-right w-2/5 bg-red-400" data-new-contact-target="form">
+      <%= render template: "contacts/show", locals: {contact: Contact.first} %>
+    </div>
   </div>
 </div>

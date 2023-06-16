@@ -1,3 +1,5 @@
+require "json"
+
 class ContactsController < ApplicationController
   before_action :set_contact, only: %i[show edit update destroy]
 
@@ -12,6 +14,14 @@ class ContactsController < ApplicationController
   def new
     @contact = Contact.new
     authorize @contact
+    respond_to do |format|
+      format.html { redirect_to new_contact_path }
+      format.json do
+        render json: {
+          html: render_to_string(partial: "form", formats: :html, locals: { contact: @contact }, layout: false)
+        }
+      end
+    end
   end
 
   def create
