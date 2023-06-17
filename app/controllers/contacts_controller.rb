@@ -5,6 +5,15 @@ class ContactsController < ApplicationController
 
   def index
     @contacts = policy_scope(Contact)
+    @contacts = @contacts.search_contact(params[:query]) if params[:query].present?
+    respond_to do |format|
+      format.html { render :index }
+      format.json do
+        render json: {
+          contacts_html: render_to_string(partial: "contacts/list", formats: :html, locals: { contacts: @contacts})
+        }.to_json
+      end
+    end
   end
 
   def show
