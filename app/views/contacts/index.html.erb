@@ -8,21 +8,11 @@
             params[:query],
             class: "form-control",
             placeholder: "Type a keyword"
-        %>
+          %>
           <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
         <% end %>
       </div>
-      <div class="contacts-list">
-        <div class="contacts-lists-contain overflow-auto"  style="height:70vh;">
-          <% if @contacts.present? %>
-            <% @contacts.each do |contact| %>
-              <%= render "contact_card", contact: contact %>
-            <% end %>
-          <% else %>
-            <h4>Add your first contact</h2>
-          <% end %>
-        </div>
-      </div>
+      <%= render "list", contacts: @contacts %>
       <div class="contacts-footer text-center">
         <button class="border" data-action="click->new-contact#renderNew">+ Add contact</button>
       </div>

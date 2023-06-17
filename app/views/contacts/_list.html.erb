@@ -1,0 +1,15 @@
+<div class="contacts-list">
+  <div class="contacts-lists-contain overflow-auto"  style="height:70vh;">
+    <% if @contacts.present? %>
+      <% if @contacts.any? %>
+        <% @contacts.each do |contact| %>
+          <%= render "contact_card", contact: contact %>
+        <% end %>
+      <% else %>
+        <h4>No contact found</h4>
+      <% end %>
+    <% else %>
+      <h4>Add your first contact</h2>
+    <% end %>
+  </div>
+</div>
