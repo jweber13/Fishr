@@ -18,8 +18,9 @@ class ContactsController < ApplicationController
       format.html { redirect_to new_contact_path }
       format.json do
         render json: {
-          html: render_to_string(partial: "form", formats: :html, locals: { contact: @contact }, layout: false)
-        }
+          new_contact_html: render_to_string(partial: "contacts/form", formats: :html,
+                                            locals: { contact: @Contact })
+        }.to_json
       end
     end
   end

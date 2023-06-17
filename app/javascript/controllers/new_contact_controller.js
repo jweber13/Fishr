@@ -15,9 +15,7 @@ export default class extends Controller {
     .then(response => response.json())
     .then(data => {
       console.log(data);
-      const html = JSON.stringify(data.html)
-      console.log(html);
-      this.formTarget.innerHTML = html
+      this.formTarget.innerHTML = data.new_contact_html
     })
     .catch(error => {
       console.error('Error fetching template:', error);
