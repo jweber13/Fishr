@@ -10,7 +10,7 @@ class ContactsController < ApplicationController
       format.html { render :index }
       format.json do
         render json: {
-          contacts_html: render_to_string(partial: "contacts/list", formats: :html, locals: { contacts: @contacts})
+          contacts_html: render_to_string(partial: "contacts/list", formats: :html, locals: { contacts: @contacts })
         }.to_json
       end
     end
