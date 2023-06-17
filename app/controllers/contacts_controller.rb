@@ -15,11 +15,10 @@ class ContactsController < ApplicationController
     @contact = Contact.new
     authorize @contact
     respond_to do |format|
-      format.html { redirect_to new_contact_path }
+      format.html { render :new }
       format.json do
         render json: {
-          new_contact_html: render_to_string(partial: "contacts/form", formats: :html,
-                                            locals: { contact: @Contact })
+          new_contact_html: render_to_string(partial: "contacts/form", formats: :html, locals: { contact: @Contact })
         }.to_json
       end
     end
