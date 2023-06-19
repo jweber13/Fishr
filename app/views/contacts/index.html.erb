@@ -1,8 +1,8 @@
-<div class="container">
+<div class="w-full  bg-gray-800">
   <div class="contacts flex justify-stretch">
     <div class="contacts-left flex-1">
       <div class="contacts-search">
-        <h2>Search name & email</h2>
+        <h2 class="text-slate-50">Search name & email</h2>
         <%= form_with url: contacts_url, method: :get, class: "d-flex" do %>
           <%= text_field_tag :query,
             params[:query],
@@ -22,7 +22,6 @@
             <h4>Add your first contact</h2>
           <% end %>
         </div>
-
         <div class="contacts-more text-center">
           <p>Total contacts <strong>(<%= @contacts.count %>)</strong> <a href="#">load more?</a></p>
         </div>

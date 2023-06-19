@@ -1,5 +1,5 @@
-<nav class="bg-gray-800" data-controller="menu">
-  <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+<nav class="bg-light dark:bg-dark" data-controller="menu" data-dark-mode-target="themeToggle">
+  <div class="  px-4 sm:px-6 lg:px-8">
     <div class="relative flex h-16 items-center justify-between">
       <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
         <!-- Mobile menu button-->
@@ -13,15 +13,13 @@
           </svg>
         </button>
       </div>
-      <div class="flex flex-1 items-center w-full justify-center sm:items-stretch sm:justify-start">
-        <div>
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-white">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-          </svg>
-        </div>
-        <div class="flex flex-shrink-0 md:pl-16 mx-auto items-center">
-          <%= image_tag "logo-text.png", class: "h-12 w-auto lg:hidden" %>
-          <%= image_tag "logo-text.png", class: "hidden h-12 w-auto lg:block" %>
+      <div class="flex flex-1 items-center w-full justify-between sm:items-stretch sm:justify-start">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 text-dark dark:text-light">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+        <div class="absolute left-[50%] top-2 translate-x-[-50%]">
+          <%= image_tag "logo-text-dark.png", class: " h-12 w-auto block dark:hidden" %>
+          <%= image_tag "logo-text-light.png", class: " h-12 w-auto hidden dark:block" %>
         </div>
       </div>
       <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
