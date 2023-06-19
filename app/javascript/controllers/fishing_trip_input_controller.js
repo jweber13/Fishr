@@ -2,10 +2,12 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="fishing-trip-input"
 export default class extends Controller {
-  static targets = ["nameInput"];
+  static targets = ["nameInput", "modal"];
 
   connect() {
-    console.log(" ");
+    console.log("fishing trip controller online");
+    console.log(this.modalTarget);
+    console.log(document.getElementById("modal"));
   }
 
   create() {
@@ -29,13 +31,13 @@ export default class extends Controller {
         console.log(data);
         if (data.status == "created") {
           // Currently, the window will close, but we'll have to re-route this to the #show page soon after upon creation.
-          let modal = document.getElementById("modal");
+          // let modal = document.getElementById("modal");
           let opacity = 1;
           const fade = () => {
             if ((opacity -= 0.1) < 0) {
-              modal.style.display = 'none';
+              this.modalTarget.style.display = 'none';
             } else {
-              modal.style.opacity = opacity;
+              this.modalTarget.style.opacity = opacity;
               requestAnimationFrame(fade);
             }
           };
