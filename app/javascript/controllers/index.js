@@ -9,3 +9,6 @@ application.register("fishing-trip-input", FishingTripInputController)
 
 import ModalhandlerController from "./modalhandler_controller"
 application.register("modalhandler", ModalhandlerController)
+
+import MenuController from "./menu_controller"
+application.register("menu", MenuController)
