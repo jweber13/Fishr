@@ -6,12 +6,13 @@ export default class extends Controller {
   static targets = ['modal'];
 
   initialize() {
-    let modal = document.getElementById("modal");
-    modal.style.display = 'none';
+    // let modal = document.getElementById("modal");
+    // modal.style.display = 'none';
   }
 
   connect() {
-    console.log("hi there, this is the modal controller.")
+    console.log("hi there, this is the modal controller.");
+    console.log(this.modalTarget);
   }
 
   open() {
