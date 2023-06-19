@@ -5,13 +5,9 @@ export default class extends Controller {
   static targets = ["nameInput", "modal"];
 
   connect() {
-    console.log("fishing trip controller online");
-    console.log(this.modalTarget);
-    console.log(document.getElementById("modal"));
   }
 
   create() {
-    console.log("entered")
     const name = this.nameInputTarget.value;
     const tripData = { name };
 
