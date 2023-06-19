@@ -18,6 +18,15 @@ class ContactsController < ApplicationController
 
   def show
     authorize @contact
+    respond_to do |format|
+      format.html { render :index }
+      format.json do
+        render json: {
+          contact_html: render_to_string(template: "contacts/show", layout: false,
+                                         formats: :html, locals: { contact: @contact })
+        }.to_json
+      end
+    end
   end
 
   def new
@@ -27,7 +36,7 @@ class ContactsController < ApplicationController
       format.html { render :new }
       format.json do
         render json: {
-          new_contact_html: render_to_string(partial: "contacts/form", formats: :html, locals: { contact: @Contact })
+          new_contact_html: render_to_string(partial: "contacts/form", formats: :html, locals: { contact: @contact })
         }.to_json
       end
     end
@@ -37,10 +46,26 @@ class ContactsController < ApplicationController
     @contact = Contact.new(contact_params)
     @contact.user = current_user
     authorize @contact
-    if @contact.save
-      redirect_to contacts_path
-    else
-      render :new, status: :unprocessable_entity
+    # if @contact.save
+    #   redirect_to contacts_path
+    # else
+    #   render :new, status: :unprocessable_entity
+    # end
+    respond_to do |format|
+      if @contact.save
+        format.json do
+          render json: {
+            html: render_to_string(template: "contacts/show", layout: false,
+                                           formats: :html, locals: { contact: @contact })
+          }.to_json
+        end
+      else
+        format.json do
+          render json: {
+            html: render_to_string(partial: "contacts/form", formats: :html, locals: { contact: @contact })
+          }.to_json
+        end
+      end
     end
   end
 
@@ -63,7 +88,7 @@ class ContactsController < ApplicationController
   private
 
   def contact_params
-    params.require(:contact).permit(:user_id, :company_id, :firstname, :lastname, :email, :phone, :insta, :linkedin, :twitter)
+    params.require(:contact).permit(:user_id, :company_id, :firstname, :lastname, :email, :phone, :insta, :linkedin, :twitter, :title, :note)
   end
 
   def set_contact

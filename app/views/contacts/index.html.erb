@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="contacts flex justify-stretch" data-controller="new-contact">
+  <div class="contacts flex justify-stretch" data-controller="contact">
     <div class="contacts-left flex-1" data-controller="search-contacts">
       <div class="contacts-search">
         <h2>Search name & email</h2>
@@ -16,10 +16,10 @@
         <%= render "list", contacts: @contacts%>
       </div>
       <div class="contacts-footer text-center">
-        <button class="border" data-action="click->new-contact#renderNew">+ Add contact</button>
+        <button class="border" data-action="click->contact#renderNew">+ Add contact</button>
       </div>
     </div>
-    <div class="contacts-right w-2/5 bg-red-400" data-new-contact-target="form">
+    <div class="contacts-right w-2/5 bg-red-400" data-contact-target="panel">
       <%= render template: "contacts/show", locals: {contact: Contact.first} %>
     </div>
   </div>

@@ -1,6 +1,7 @@
 <div class="container ">
   <h3>New Contact</h3>
-  <%= simple_form_for(@contact) do |f| %>
+  <%= simple_form_for @contact, data: { 'contact-target'=>'form' } do |f| %>
+    <%= f.hidden_field :authenticity_token, value: form_authenticity_token %>
     <img src="https://slack-imgs.com/?c=1&o1=ro&url=https%3A%2F%2Fmedia.discordapp.net%2Fattachments%2F1112292984747204731%2F1117728036645769337%2FDaFoRceZ_logo_for_a_job_application_management_app_fish_trip_bi_f250d0fd-17a2-4115-a1f2-cf0392003020.png%3Fwidth%3D998%26height%3D998" alt="" class="mx-auto w-1/2 aspect-square rounded-full">
     <%= f.input :firstname, input_html: { class: 'text-center' } %>
     <%= f.input :lastname, input_html: { class: 'text-center' } %>
@@ -27,6 +28,7 @@
         <h3>Note</h3>
         <%= f.input :note %>
       </div>
-      <%= f.submit %>
-    <% end %>
-  </div>
+      <%= f.submit "Submit", data: { "action" => "click->contact#submitNew" } %>
+    </p>
+  <% end %>
+</div>
