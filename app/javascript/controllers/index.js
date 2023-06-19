@@ -9,3 +9,9 @@ application.register("hello", HelloController)
 
 import MenuController from "./menu_controller"
 application.register("menu", MenuController)
+
+import NewContactController from "./new_contact_controller"
+application.register("new-contact", NewContactController)
+
+import SearchContactsController from "./search_contacts_controller"
+application.register("search-contacts", SearchContactsController)
