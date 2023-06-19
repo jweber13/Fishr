@@ -1,13 +1,8 @@
 import { Controller } from "@hotwired/stimulus"
-
-// Connects to data-controller="modalhandler"
-
 export default class extends Controller {
   static targets = ['modal'];
 
   initialize() {
-    // let modal = document.getElementById("modal");
-    // modal.style.display = 'none';
   }
 
   connect() {
@@ -16,11 +11,7 @@ export default class extends Controller {
   }
 
   open() {
-    // console.log("opening");
-    let modal = document.getElementById("modal");
-    // this.modalTarget.style.display = 'flex';
-    // this.fadeIn();
-    modal.style.display = 'flex';
+    this.modalTarget.style.display = 'flex';
     this.fadeIn();
   }
 
@@ -31,11 +22,9 @@ export default class extends Controller {
 
   fadeIn() {
     let opacity = 0;
-    let modal = document.getElementById("modal");
     const fade = () => {
       if (!((opacity += 0.2) > 1)) {
-        // this.modalhandlerTarget.style.opacity = opacity;
-        modal.style.opacity = opacity;
+        this.modalTarget.style.opacity = opacity;
         requestAnimationFrame(fade);
       }
     };
@@ -43,15 +32,12 @@ export default class extends Controller {
   }
 
   fadeOut() {
-    // console.log(`this is the el: ${document.getElementById("modal")}`);
-    let modal = document.getElementById("modal");
-    console.log(`this is this: ${this}`);
     let opacity = 1;
     const fade = () => {
       if ((opacity -= 0.1) < 0) {
-        modal.style.display = 'none';
+        this.modalTarget.style.display = 'none';
       } else {
-        modal.style.opacity = opacity;
+        this.modalTarget.style.opacity = opacity;
         requestAnimationFrame(fade);
       }
     };
