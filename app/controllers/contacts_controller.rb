@@ -1,8 +1,19 @@
+require "json"
+
 class ContactsController < ApplicationController
   before_action :set_contact, only: %i[show edit update destroy]
 
   def index
     @contacts = policy_scope(Contact)
+    @contacts = @contacts.search_contact(params[:query]) if params[:query].present?
+    respond_to do |format|
+      format.html { render :index }
+      format.json do
+        render json: {
+          contacts_html: render_to_string(partial: "contacts/list", formats: :html, locals: { contacts: @contacts })
+        }.to_json
+      end
+    end
   end
 
   def show
@@ -12,6 +23,14 @@ class ContactsController < ApplicationController
   def new
     @contact = Contact.new
     authorize @contact
+    respond_to do |format|
+      format.html { render :new }
+      format.json do
+        render json: {
+          new_contact_html: render_to_string(partial: "contacts/form", formats: :html, locals: { contact: @Contact })
+        }.to_json
+      end
+    end
   end
 
   def create

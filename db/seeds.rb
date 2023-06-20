@@ -36,11 +36,13 @@ puts "creating companies and contacts"
   contact = Contact.new(
     firstname: name.split[0],
     lastname: name.split[1],
+    title: Faker::Job.title,
     email: Faker::Internet.email(name: name.split[0], domain: "#{company.name}.com"),
     phone: Faker::PhoneNumber.cell_phone,
     insta: name.split[0],
     linkedin: "linkedin.com/#{name.gsub(' ', '-')}",
-    twitter: "@#{name.split[0]}"
+    twitter: "@#{name.split[0]}",
+    note: Faker::Lorem.paragraph(sentence_count: 5)
   )
   contact.user = user
   contact.company = company
