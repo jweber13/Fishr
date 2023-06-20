@@ -4,6 +4,13 @@
 
 import { application } from "./application";
 
+
+import FishingTripInputController from "./fishing_trip_input_controller"
+application.register("fishing-trip-input", FishingTripInputController)
+
+import ModalhandlerController from "./modalhandler_controller"
+application.register("modalhandler", ModalhandlerController)
+
 import HelloController from "./hello_controller";
 application.register("hello", HelloController);
 
