@@ -11,6 +11,7 @@ puts "destroying database"
 
 Contact.destroy_all
 Company.destroy_all
+FishingTrip.destroy_all
 User.destroy_all
 
 puts "creating user"
