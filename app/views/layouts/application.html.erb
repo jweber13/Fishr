@@ -9,7 +9,7 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
-  <body>
+  <body class="bg-light dark:bg-dark" data-controller="dark-mode">
     <%= render "shared/nav_bar" %>
     <%= render "shared/sidebar" %>
     <%= render "shared/flashes" %>

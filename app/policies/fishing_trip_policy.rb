@@ -7,7 +7,7 @@ class FishingTripPolicy < ApplicationPolicy
   end
 
   def create?
-    user_signed_in?
+    true
   end
 
   def show?

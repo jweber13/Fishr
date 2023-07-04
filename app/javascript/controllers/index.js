@@ -2,10 +2,17 @@
 // Run that command whenever you add a new controller or create them with
 // ./bin/rails generate stimulus controllerName
 
-import { application } from "./application"
+import { application } from "./application";
 
-import HelloController from "./hello_controller"
-application.register("hello", HelloController)
+
+import FishingTripInputController from "./fishing_trip_input_controller"
+application.register("fishing-trip-input", FishingTripInputController)
+
+import ModalhandlerController from "./modalhandler_controller"
+application.register("modalhandler", ModalhandlerController)
+
+import HelloController from "./hello_controller";
+application.register("hello", HelloController);
 
 import MenuController from "./menu_controller"
 application.register("menu", MenuController)
