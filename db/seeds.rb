@@ -30,7 +30,7 @@ puts "creating companies and contacts"
     address: Faker::Address.full_address,
     description: Faker::Company.bs
   )
-  company.website = Faker::Internet.url(host: "#{company.name}.com")
+  company.website = "#{company.name.gsub(/[ ,.]/, '').downcase}.com"
   company.save
 
   name = Faker::Movies::StarWars.character
